@@ -14,19 +14,28 @@ class Program
                 await Task.Delay(1000);
                 return new[] { "Todo 1", "Todo 2" };
             },
-            q => Console.WriteLine($"Observer Update: {q.Status} | Data: {string.Join(", ", q.Data ?? Array.Empty<string>())}")
+            r => Console.WriteLine($"Observer Update: {r.Status} | {string.Join(", ", r.Data ?? Array.Empty<string>())}")
         );
 
-        Console.WriteLine($"Initial Status: {result.Status}"); // Idle or Loading
+        // Initial snapshot
+        Console.WriteLine($"Initial Status: {result.Status}");
 
         // Wait to see async fetch finish
         await Task.Delay(1500);
-
-        var result2 = QueryHooks.UseQuery(
+       var result_2 = QueryHooks.UseQuery(
             "todos",
-            async () => Array.Empty<string>() // same key, fetchFn ignored
+            async () =>
+            {
+                await Task.Delay(1000);
+                return new[] { "Todo 1", "Todo 2" , "Todo 3" };
+            },
+            r => Console.WriteLine($"Observer Update: {r.Status} | {string.Join(", ", r.Data ?? Array.Empty<string>())}")
         );
 
-        Console.WriteLine($"After fetch: {string.Join(", ", result2.Data ?? Array.Empty<string>())}");
+
+
+        // result now has updated data automatically
+        Console.WriteLine($"Final Data: {string.Join(", ", result.Data ?? Array.Empty<string>())}");
+
     }
 }

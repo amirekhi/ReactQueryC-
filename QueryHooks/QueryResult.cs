@@ -6,17 +6,24 @@ using ReactQuerySharp.Query;
 
 namespace ReactQuerySharp.QueryHooks
 {
-    public class QueryResult<T>
+  public class QueryResult<T>
     {
-        public T Data { get; set; }
-        public QueryStatus Status { get; set; }
-        public Exception Error { get; set; }
+        public T Data { get; private set; }
+        public QueryStatus Status { get; private set; }
+        public Exception Error { get; private set; }
 
-        public QueryResult(T data, QueryStatus status, Exception error)
+        public QueryResult(T data = default, QueryStatus status = QueryStatus.Idle, Exception error = null)
         {
             Data = data;
             Status = status;
             Error = error;
+        }
+
+        internal void Update(Query<T> query)
+        {
+            Data = query.Data;
+            Status = query.Status;
+            Error = query.Error;
         }
     }
 }
