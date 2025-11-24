@@ -1,9 +1,9 @@
-﻿using ReactQuerySharp.QueryClient;
+﻿using ReactQuerySharp.QueryClientF;
 using ReactQuerySharp.QueryObserver;
 
 
 // the context holding queries creating them if needed
-var client = new QueryClient();
+var client =  QueryClient.Instance;
 
 var query = client.GetQuery(
     "todos",
@@ -43,11 +43,4 @@ var comp_two_query = client.GetQuery("todos",
     });
 
 
-   var queryData = await client.FetchQuery<string[]>("todos",
-     async () =>
-    {
-        await Task.Delay(1000);
-        return new[] { "Todo 1", "Todo 2" };
-    });
-
-    Console.WriteLine("queryData: " + string.Join(", ", queryData));
+   

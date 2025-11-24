@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ReactQuerySharp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04b3ef78de8c4478391a4e5db626eb2409103494")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9275689f8bc52f2652efbd8e8e2981a6de19746e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ReactQuerySharp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ReactQuerySharp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
