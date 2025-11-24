@@ -4,25 +4,33 @@ using ReactQuerySharp.QueryClientF;  // <-- ADD THIS
 
 namespace ReactQuerySharp.QueryHooks
 {
-    public static class QueryHooks
+       public static class QueryHooks
     {
-        public static Query<T> UseQuery<T>(
+        public static QueryResult<T> UseQuery<T>(
             string key,
             Func<Task<T>> fetchFn,
-            Action<Query<T>> observerCallback)
+            Action<Query<T>> observerCallback = null) // optional
         {
             var client = QueryClient.Instance;
 
+            // Step 1: get or create query
             var query = client.GetQuery(key, fetchFn);
 
-            var observer = new QueryObserver<T>(query, observerCallback);
-
-            if (query.Status == QueryStatus.Idle)
+            // Step 2: subscribe observer if provided
+            if (observerCallback != null)
             {
-                _ = query.Fetch(); 
+                var observer = new QueryObserver<T>(query, observerCallback);
             }
 
-            return query;
+            // Step 3: trigger fetch if idle
+            if (query.Status == QueryStatus.Idle)
+            {
+                _ = query.Fetch();
+            }
+
+            // Step 4: return current snapshot
+            return new QueryResult<T>(query.Data, query.Status, query.Error);
         }
     }
+
 }

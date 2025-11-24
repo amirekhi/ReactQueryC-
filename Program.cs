@@ -1,46 +1,32 @@
-﻿using ReactQuerySharp.QueryClientF;
-using ReactQuerySharp.QueryObserver;
+﻿using System;
+using System.Threading.Tasks;
+using ReactQuerySharp.QueryHooks;
+using ReactQuerySharp.Query;
 
-
-// the context holding queries creating them if needed
-var client =  QueryClient.Instance;
-
-var query = client.GetQuery(
-    "todos",
-    async () =>
+class Program
+{
+    static async Task Main(string[] args)
     {
-        await Task.Delay(1000);
-        return new[] { "Todo 1", "Todo 2" };
+        var result = QueryHooks.UseQuery(
+            "todos",
+            async () =>
+            {
+                await Task.Delay(1000);
+                return new[] { "Todo 1", "Todo 2" };
+            },
+            q => Console.WriteLine($"Observer Update: {q.Status} | Data: {string.Join(", ", q.Data ?? Array.Empty<string>())}")
+        );
+
+        Console.WriteLine($"Initial Status: {result.Status}"); // Idle or Loading
+
+        // Wait to see async fetch finish
+        await Task.Delay(1500);
+
+        var result2 = QueryHooks.UseQuery(
+            "todos",
+            async () => Array.Empty<string>() // same key, fetchFn ignored
+        );
+
+        Console.WriteLine($"After fetch: {string.Join(", ", result2.Data ?? Array.Empty<string>())}");
     }
-);
-
-var observer = new QueryObserver<string[]>(
-    query,
-    (q) =>
-    {
-        Console.WriteLine($"Status: {q.Status}");
-        if (q.Data != null)
-            Console.WriteLine("Data: " + string.Join(", ", q.Data));
-    }
-);
-
-
-// lets say we are in another component 
-
-
-var comp_two_query = client.GetQuery("todos",
-    async () =>
-    {
-        await Task.Delay(1000);
-        return new[] { "Todo 1", "Todo 2" };
-    });
-
-    QueryObserver<string[]> comp_two_observer = new QueryObserver<string[]>(comp_two_query, (q) =>
-    {
-          Console.WriteLine($"Status: {q.Status}");
-        if (q.Data != null)
-            Console.WriteLine("comp_two_Data: " + string.Join(", ", q.Data));
-    });
-
-
-   
+}
