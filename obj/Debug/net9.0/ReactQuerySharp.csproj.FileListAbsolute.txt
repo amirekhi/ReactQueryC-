@@ -1,0 +1,15 @@
+C:\Users\PHOENIX\Desktop\react query\reactquerysharp\bin\Debug\net9.0\ReactQuerySharp.exe
+C:\Users\PHOENIX\Desktop\react query\reactquerysharp\bin\Debug\net9.0\ReactQuerySharp.deps.json
+C:\Users\PHOENIX\Desktop\react query\reactquerysharp\bin\Debug\net9.0\ReactQuerySharp.runtimeconfig.json
+C:\Users\PHOENIX\Desktop\react query\reactquerysharp\bin\Debug\net9.0\ReactQuerySharp.dll
+C:\Users\PHOENIX\Desktop\react query\reactquerysharp\bin\Debug\net9.0\ReactQuerySharp.pdb
+C:\Users\PHOENIX\Desktop\react query\reactquerysharp\obj\Debug\net9.0\ReactQuerySharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PHOENIX\Desktop\react query\reactquerysharp\obj\Debug\net9.0\ReactQuerySharp.AssemblyInfoInputs.cache
+C:\Users\PHOENIX\Desktop\react query\reactquerysharp\obj\Debug\net9.0\ReactQuerySharp.AssemblyInfo.cs
+C:\Users\PHOENIX\Desktop\react query\reactquerysharp\obj\Debug\net9.0\ReactQuerySharp.csproj.CoreCompileInputs.cache
+C:\Users\PHOENIX\Desktop\react query\reactquerysharp\obj\Debug\net9.0\ReactQuerySharp.sourcelink.json
+C:\Users\PHOENIX\Desktop\react query\reactquerysharp\obj\Debug\net9.0\ReactQuerySharp.dll
+C:\Users\PHOENIX\Desktop\react query\reactquerysharp\obj\Debug\net9.0\refint\ReactQuerySharp.dll
+C:\Users\PHOENIX\Desktop\react query\reactquerysharp\obj\Debug\net9.0\ReactQuerySharp.pdb
+C:\Users\PHOENIX\Desktop\react query\reactquerysharp\obj\Debug\net9.0\ReactQuerySharp.genruntimeconfig.cache
+C:\Users\PHOENIX\Desktop\react query\reactquerysharp\obj\Debug\net9.0\ref\ReactQuerySharp.dll
