@@ -29,7 +29,15 @@ namespace ReactQuerySharp.QueryClientF
                 _queries[key] = query;
                 return query;
             }
-        }
+          public void InvalidateQuery(string key)
+            {
+                if (_queries.TryGetValue(key, out var obj))
+                {
+                    dynamic query = obj;
+                    _ = query.Fetch(); // refetch immediately
+                }
+            }
 
+        }
 
 }
